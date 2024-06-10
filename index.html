@@ -4,8 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
-<body>
-    
+    <div class="wrapper">
+        <input type="search" class="search" placeholder="Search">
+        <ul class="search__results"></ul>
+        <div class="error">
+            <span class="error__text"></span>
+        </div>
+<div class="list">
+        <template class="list__wrapper">
+            <div class="list__item">
+            <p class="list__name">Name: <span class="list__name-value"></span></p>
+            <p class="list__owner">Owner: <span class="list__owner-value"></span></p>
+            <p class="list__stars">Stars: <span class="list__stars-value"></span></p>
+            <img class="close-button" src="/img/close.png">
+        </div>
+    </template>
+</div>
+   
+<script src="/main.js"></script>
 </body>
 </html>
