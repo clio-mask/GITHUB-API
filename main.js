@@ -23,17 +23,21 @@ const debounce = (func, delay) => {
   };
 };
 
-const fetchApi = async () => {
+const fetchApi = async (api) => {
   try {
-    const response = await fetch(newUrl);
+    const response = await fetch(api);
     if(!response.ok) {
-        throw new Error('Ошибка')
+      throw new Error('Ошибка сервера, попробуйте повторить позже')
     }
     const data = await response.json();
 
     const dataItems = data.items;
-
-    dataItems.forEach(createListItem);
+if (dataItems.length != 0){
+  dataItems.forEach(createListItem);
+} else {
+  throw new Error('Ничего не найдено')
+}
+   
 
   } catch (error) {
     errorText.textContent = error.message;
@@ -77,12 +81,11 @@ const allSearchResults = document.querySelectorAll('.search__item')
 allSearchResults.forEach(searchItem => searchItem.remove());
 };
 
-searchInput.addEventListener('keydown', function(e) {
+searchInput.addEventListener('input', function(e) {
   errorText.textContent = '';
-  const repoList = document.querySelectorAll('.search__item');
-  repoList.forEach((el) => el.remove());
+  removeSearchResults();
   newUrl.searchParams.set('q', e.target.value);
-  debouncedTimeout();
+  debouncedTimeout(newUrl.href);
 });
 
 
