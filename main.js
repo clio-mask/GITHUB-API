@@ -70,7 +70,7 @@ const addItem = (name, owner, stars) => {
 }
 
 
-const debouncedTimeout = debounce(fetchApi, 300);
+const debouncedTimeout = debounce(fetchApi, 400);
 
 const removeSearchResults = () => {
 const allSearchResults = document.querySelectorAll('.search__item')
