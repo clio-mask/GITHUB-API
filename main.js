@@ -37,8 +37,6 @@ if (dataItems.length != 0){
 } else {
   throw new Error('Ничего не найдено')
 }
-   
-
   } catch (error) {
     errorText.textContent = error.message;
   }
@@ -84,7 +82,7 @@ allSearchResults.forEach(searchItem => searchItem.remove());
 searchInput.addEventListener('input', function(e) {
   errorText.textContent = '';
   removeSearchResults();
-  
+
   const key = e.inputType === "insertText" ? e.data : "";
 
   if (key !== " ") {
