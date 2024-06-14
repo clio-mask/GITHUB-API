@@ -78,6 +78,7 @@ allSearchResults.forEach(searchItem => searchItem.remove());
 };
 
 searchInput.addEventListener('keydown', function(e) {
+  errorText.textContent = '';
   const repoList = document.querySelectorAll('.search__item');
   repoList.forEach((el) => el.remove());
   newUrl.searchParams.set('q', e.target.value);
