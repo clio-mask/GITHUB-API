@@ -84,8 +84,13 @@ allSearchResults.forEach(searchItem => searchItem.remove());
 searchInput.addEventListener('input', function(e) {
   errorText.textContent = '';
   removeSearchResults();
-  newUrl.searchParams.set('q', e.target.value);
-  debouncedTimeout(newUrl.href);
+  const key = e.inputType === "insertText" ? e.data : "";
+  if (key !== " ") {
+    newUrl.searchParams.set('q', e.target.value.trim());
+    debouncedTimeout(newUrl.href);
+  }
+ 
+
 });
 
 
